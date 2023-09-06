@@ -1,6 +1,6 @@
 import express, { Express } from "express";
-import { PORT } from "./config";
-import router from "./routes/videos.routes";
+import { PORT } from "../config";
+import router from "../routes/videos.routes";
 
 const app: Express = express();
 
