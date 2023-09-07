@@ -2,9 +2,8 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
   try {
-   
-    await mongoose.connect('mongodb://localhost:27017/mydb');
-    console.log('>>> DB is connected');
+    await mongoose.connect("mongodb://localhost:27017/tiktokdb");
+    console.log(">>> DB is connected");
   } catch (error) {
     console.error(error);
   }
