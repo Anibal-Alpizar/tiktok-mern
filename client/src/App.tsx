@@ -1,29 +1,29 @@
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
-  const [file, setFile] = useState<string>();
-  const [isFileSelected, setisFileSelected] = useState<boolean>(false);
+  const [file, setFile] = useState<any>({
+    name: "",
+  });
 
-  const handlerForm = (e: any) => {
-    e.preventDefault();
-    console.log(file);
+  const [isFileSelected, setFileSelected] = useState<boolean>(false);
+
+  const handlerSubmit = async () => {
+    const formData = new FormData();
+    formData.append("file", file.name!);
+    await axios.post("http://localhost:3000/upload", formData);
+    console.log("Video uploaded successfully");
   };
 
-  const handlerFile = (e: any) => {
-    if (file == null) {
-      setFile(e.target.files[0]);
-      setisFileSelected(true);
-    } else {
-      console.log("No file selected");
-    }
+  const handlerInput = (e: any) => {
+    setFile({ ...file, name: e.target.files![0] });
+    setFileSelected(true)
   };
 
   return (
-    <form onSubmit={handlerForm}>
-      <input type="file" name="file" onChange={handlerFile} />
-      <button disabled={!isFileSelected} type="submit">
-        Submit Video
-      </button>
+    <form onSubmit={handlerSubmit}>
+      <input type="file" onChange={handlerInput} accept="video/*" />
+      <button disabled={!isFileSelected} type="submit">Submit Video</button>
     </form>
   );
 }
