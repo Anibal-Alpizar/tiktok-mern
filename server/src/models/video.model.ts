@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const videoSchema = new mongoose.Schema({
-  video: {
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  tempFilePath: {
     type: String,
     required: true,
     trim: true,
