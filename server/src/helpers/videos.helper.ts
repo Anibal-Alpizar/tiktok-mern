@@ -9,6 +9,15 @@ const getVideosHelper = async () => {
   }
 };
 
+const getVideoHelper = async (id: string) => {
+  try {
+    const video = await Video.findById(id);
+    return video;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const postVideoHelper = async (name: string, tempFilePath: string) => {
   try {
     const newVideo = new Video({
@@ -26,5 +35,6 @@ const postVideoHelper = async (name: string, tempFilePath: string) => {
 
 export const videosActions = {
   getVideosHelper,
+  getVideoHelper,
   postVideoHelper,
 };

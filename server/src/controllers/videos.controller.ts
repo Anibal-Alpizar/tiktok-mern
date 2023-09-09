@@ -10,6 +10,16 @@ export const getVideos = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+export const getVideo = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const video = await videosActions.getVideoHelper(id as string);
+    res.json(video);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const postVideo = async (req: Request, res: Response) => {
   try {
