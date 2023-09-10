@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getVideo,
   getVideos,
+  playVideo,
   postVideo,
 } from "../controllers/videos.controller";
 
@@ -10,6 +11,8 @@ const router: Router = Router();
 router.get("/", getVideos);
 
 router.get("/:id", getVideo);
+
+router.get("/video/:id", playVideo)
 
 router.post("/upload", postVideo);
 

@@ -1,4 +1,7 @@
 import Video from "../models/video.model";
+import { getVideoDirectory } from "../utils/videos/videos.util";
+import path from "path";
+import { existsSync } from "fs";
 
 const getVideosHelper = async () => {
   try {
@@ -33,8 +36,26 @@ const postVideoHelper = async (name: string, tempFilePath: string) => {
   }
 };
 
+const playVideoHelper = (videoName: string) => {
+  const filePath = getVideoDirectory(videoName);
+  return fileExists(filePath) ? filePath : false;
+};
+
+const fileExists = (filePath: string) => {
+  try {
+    if (existsSync(filePath)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    return false;
+  }
+};
+
 export const videosActions = {
   getVideosHelper,
   getVideoHelper,
   postVideoHelper,
+  playVideoHelper,
 };
