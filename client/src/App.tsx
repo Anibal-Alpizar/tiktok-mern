@@ -1,30 +1,17 @@
-import { useState } from "react";
-import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import VideosPage from "./pages/videos/VideosPage";
+import UploadVideoPage from "./pages/videos/UploadVideoPage";
 
 function App() {
-  const [file, setFile] = useState<any>({
-    name: "",
-  });
-
-  const [isFileSelected, setFileSelected] = useState<boolean>(false);
-
-  const handlerSubmit = async () => {
-    const formData = new FormData();
-    formData.append("file", file.name!);
-    await axios.post("http://localhost:3000/upload", formData);
-    console.log("Video uploaded successfully");
-  };
-
-  const handlerInput = (e: any) => {
-    setFile({ ...file, name: e.target.files![0] });
-    setFileSelected(true)
-  };
-
   return (
-    <form onSubmit={handlerSubmit}>
-      <input type="file" onChange={handlerInput} accept="video/*" />
-      <button disabled={!isFileSelected} type="submit">Submit Video</button>
-    </form>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<VideosPage />} />
+        <Route path="/new" element={<UploadVideoPage />} />
+      </Routes>
+    </>
   );
 }
 
