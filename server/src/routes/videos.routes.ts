@@ -12,7 +12,7 @@ router.get("/", getVideos);
 
 router.get("/:id", getVideo);
 
-router.get("/video/:id", playVideo)
+router.get("/videos/:id", playVideo)
 
 router.post("/upload", postVideo);
 

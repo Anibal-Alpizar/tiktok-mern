@@ -35,7 +35,7 @@ export const postVideo = async (req: Request, res: Response) => {
 
 export const playVideo = async (req: Request, res: Response) => {
   const { id } = req.params;
-  console.log(id)
+  console.log(id);
   try {
     const video = videosActions.playVideoHelper(id);
     res.json(video);
