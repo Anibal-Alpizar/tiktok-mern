@@ -38,7 +38,7 @@ const postVideoHelper = async (name: string, tempFilePath: string) => {
 
 const playVideoHelper = (videoName: string) => {
   const filePath = getVideoDirectory(videoName);
-  return fileExists(filePath) ? filePath : false;
+  return fileExists(filePath) ? filePath + '.mp4' : false;
 };
 
 const fileExists = (filePath: string) => {

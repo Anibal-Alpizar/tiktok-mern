@@ -20,15 +20,18 @@ function VideosPage() {
         console.error("Error al obtener videos:", error);
       }
     };
-
+    
     getAllVideos();
+  
+    
   }, []);
   return (
     <div>
       <h1>Lista de Videos</h1>
       <ul>
-        {videos.map(video => (
+        {videos.map((video, index) => (
           <li key={video._id}>
+            <p>{index} - {`http://localhost:3000/${video.tempFilePath}`}</p>
             <video controls>
               <source src={`http://localhost:3000/${video.tempFilePath}`} type="video/mp4" />
             </video>
