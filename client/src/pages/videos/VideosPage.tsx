@@ -1,41 +1,41 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
-type Video = {
-  _id: string; 
+interface Video {
+  _id: string;
   name: string;
   tempFilePath: string;
-};
+}
 
-function VideosPage() {
+function VideoList() {
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
-    const getAllVideos = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/");
+    axios
+      .get("http://localhost:3000")
+      .then((response) => {
         setVideos(response.data);
-      } catch (error) {
-        console.error("Error al obtener videos:", error);
-      }
-    };
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }, []);
     
-    getAllVideos();
-  
     
-  }, []);
-  return (
-    <div>
+    return (
+      <div>
       <h1>Lista de Videos</h1>
       <ul>
-        {videos.map((video, index) => (
+        {videos.map((video) => (
           <li key={video._id}>
-            <p>{index} - {`http://localhost:3000/${video.tempFilePath}`}</p>
-            <video controls>
-              <source src={`http://localhost:3000/${video.tempFilePath}`} type="video/mp4" />
+            <h2>{video.tempFilePath}</h2>
+            <video width="320" height="240" controls>
+              <source
+                src={`http://localhost:3000/${video.tempFilePath}`}
+                type="video/mp4"
+                />
+              Tu navegador no admite el elemento de video.
             </video>
-            <p>{video.name}</p>
           </li>
         ))}
       </ul>
@@ -43,4 +43,4 @@ function VideosPage() {
   );
 }
 
-export default VideosPage;
+export default VideoList;
