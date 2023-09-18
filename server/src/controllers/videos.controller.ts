@@ -51,10 +51,17 @@ export const deleteVideos = async (req: Request, res: Response) => {
 
 // TODO: status code
 export const playVideo = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  console.log(id);
+  const { filename } = req.params;
+  console.log(filename);
   try {
-    const video = videosActions.playVideoHelper(id);
-    res.json(video);
-  } catch (error) {}
+    const videoPath = videosActions.playVideoHelper(filename);
+
+    if (videoPath) {
+      res.sendFile(videoPath, { headers: { "Content-Type": "video/mp4" } });
+    } else {
+      res.status(404).json({ error: "Video not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
 };

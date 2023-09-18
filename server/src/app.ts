@@ -4,7 +4,6 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import router from "./routes/videos.routes";
 
-
 const app: Express = express();
 
 app.use(
@@ -23,8 +22,5 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use(router);
-
-app.use('/videos', express.static('./videos'));
-
 
 export default app;
