@@ -1,15 +1,13 @@
 import { Request, Response } from "express";
 import { videosActions } from "../helpers/videos.helper";
 import { UploadedFile } from "express-fileupload";
-import Video from "../models/video.model";
 
 export const getVideos = async (req: Request, res: Response) => {
   try {
-    // const videos = await videosActions.getVideosHelper();
-    const videos = await Video.find();
-    res.json(videos);
+    const videos = await videosActions.getVideosHelper();
+    res.status(200).json(videos);
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ error: "Error while getting videos" });
   }
 };
 
@@ -20,15 +18,13 @@ export const getVideo = async (req: Request, res: Response) => {
     const video = await videosActions.getVideoHelper(id as string);
 
     if (!video) {
-      // Si el video no se encuentra, devuelve un error 404
-      res.status(404).json({ error: "Video no encontrado" });
+      res.status(404).json({ error: "Video not found" });
       return;
     }
-
-    res.json(video);
+    res.status(200).json(video);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Error al obtener el video" });
+    res.status(500).json({ error: "Error while getting video" });
   }
 };
 
@@ -38,29 +34,27 @@ export const postVideo = async (req: Request, res: Response) => {
 
     await videosActions.postVideoHelper(name, tempFilePath);
 
-    res.send("video saved");
+    res.status(200).json({ message: "Video uploaded successfully" });
   } catch (error) {
-    console.log(error);
-  }
-};
-
-export const playVideo = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  console.log(id);
-  try {
-    const video = videosActions.playVideoHelper(id);
-    res.json(video);
-  } catch (error) {
-    console.log(error);
+    res.status(500).json({ error: "Error while uploading video" });
   }
 };
 
 export const deleteVideos = async (req: Request, res: Response) => {
   try {
     await videosActions.deleteAllVideos();
-    res.status(204).send();
+    res.status(200).json({ message: "Videos deleted successfully" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Error al borrar los videos" });
+    res.status(500).json({ error: "Error while deleting videos" });
   }
+};
+
+// TODO: status code
+export const playVideo = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+    const video = videosActions.playVideoHelper(id);
+    res.json(video);
+  } catch (error) {}
 };

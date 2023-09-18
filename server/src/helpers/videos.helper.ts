@@ -9,6 +9,7 @@ const getVideosHelper = async () => {
     return videos;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -18,15 +19,13 @@ const getVideoHelper = async (id: string) => {
     const video = await Video.findById(id);
 
     if (!video) {
-      // Si no se encuentra el video, puedes devolver null o lanzar un error personalizado.
-      // Aquí se devuelve null como ejemplo.
       return null;
     }
 
     return video;
   } catch (error) {
     console.log(error);
-    throw error; // Lanza el error para que sea manejado en la función controladora.
+    throw error;
   }
 };
 
@@ -42,6 +41,7 @@ const postVideoHelper = async (name: string, tempFilePath: string) => {
     return "video saved";
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -64,11 +64,10 @@ const fileExists = (filePath: string) => {
 
 export const deleteAllVideos = async () => {
   try {
-    // Utiliza el método adecuado para eliminar todos los documentos de la colección de videos en MongoDB
     await Video.deleteMany({});
   } catch (error) {
     console.error(error);
-    throw error; // Lanza el error para que sea manejado en la ruta
+    throw error;
   }
 };
 

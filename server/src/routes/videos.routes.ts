@@ -4,17 +4,16 @@ import {
   getVideos,
   playVideo,
   postVideo,
-  deleteVideos
+  deleteVideos,
 } from "../controllers/videos.controller";
 
 const router: Router = Router();
-
 
 router.get("/", getVideos);
 
 router.get("/:id", getVideo);
 
-router.get("/videos/:id", playVideo)
+router.get("/videos/:id", playVideo);
 
 router.post("/upload", postVideo);
 
