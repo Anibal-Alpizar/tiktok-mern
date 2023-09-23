@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
+import { Video } from "../../interfaces";
 import axios from "axios";
-
-interface Video {
-  _id: string;
-  name: string;
-  tempFilePath: string;
-}
+import { HTTP, ERRORS } from "../../constants";
+import { toast } from "react-toastify";
 
 function VideoList() {
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/") // La URL de tu servidor
+      .get(HTTP.API_URL)
       .then((response) => {
         const modifiedVideos = response.data.map((video: Video) => ({
           ...video,
           tempFilePath: video.tempFilePath.replace("videos\\", ""),
         }));
         setVideos(modifiedVideos);
+
+        toast.success("Videos loaded successfully");
       })
       .catch((error) => {
         console.error(error);
@@ -35,10 +34,10 @@ function VideoList() {
             <h2>{video._id}</h2>
             <video width="320" height="240" controls loop>
               <source
-                src={`http://localhost:3000/videos/${video.tempFilePath}`}
+                src={`${HTTP.API_URL_VIDEOS}/${video.tempFilePath}`}
                 type="video/mp4"
               />
-              Tu navegador no admite el elemento de video.
+              {ERRORS.VIDEO_NOT_SUPPORTED}
             </video>
           </li>
         ))}
