@@ -18,8 +18,11 @@ app.use(
     tempFileDir: "./videos",
   })
 );
+
 app.use(morgan("dev"));
 app.use(express.json());
+ 
+app.use("/videos", express.static("videos"));
 
 app.use(router);
 
