@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Video } from "../../interfaces";
 import axios from "axios";
 import { HTTP, ERRORS } from "../../constants";
-import { toast } from "react-toastify";
 
 function VideoList() {
   const [videos, setVideos] = useState<Video[]>([]);
@@ -16,8 +15,6 @@ function VideoList() {
           tempFilePath: video.tempFilePath.replace("videos\\", ""),
         }));
         setVideos(modifiedVideos);
-
-        toast.success("Videos loaded successfully");
       })
       .catch((error) => {
         console.error(error);
