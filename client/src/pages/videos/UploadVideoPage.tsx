@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 function UploadVideoPage() {
   const navigate = useNavigate();
+  // TODO: change any type
   const [file, setFile] = useState<any>({
     name: "",
   });
 
   const [isFileSelected, setFileSelected] = useState<boolean>(false);
 
+  // TODO: change any type
   const handlerSubmit = async (e: any) => {
     e.preventDefault();
     try {
