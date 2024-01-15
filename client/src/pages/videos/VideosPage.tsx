@@ -22,7 +22,7 @@ function VideoList() {
   }, []);
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <h1>Lista de Videos</h1>
       <ul>
         {videos.map((video) => (
