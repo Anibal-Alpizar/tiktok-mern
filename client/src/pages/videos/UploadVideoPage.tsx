@@ -1,21 +1,26 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function UploadVideoPage() {
+  const navigate = useNavigate();
   const [file, setFile] = useState<any>({
     name: "",
   });
 
   const [isFileSelected, setFileSelected] = useState<boolean>(false);
 
-  const handlerSubmit = async (e:any) => {
-    e.preventDefault()
+  const handlerSubmit = async (e: any) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
       formData.append("file", file.name!);
-      console.log(file.name)
+      console.log(file.name);
       await axios.post("http://localhost:3000/upload", formData);
       console.log("Video uploaded successfully");
+      toast.success("Video uploaded successfully");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
