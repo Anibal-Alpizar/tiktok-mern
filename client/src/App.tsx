@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import Navbar  from "./components/navbar/Navbar"
 import VideosPage from "./pages/videos/VideosPage";
 import UploadVideoPage from "./pages/videos/UploadVideoPage";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
-      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<VideosPage />} />
         <Route path="/new" element={<UploadVideoPage />} />
