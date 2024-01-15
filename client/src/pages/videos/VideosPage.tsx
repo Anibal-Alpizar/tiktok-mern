@@ -22,20 +22,30 @@ function VideoList() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center">
-      <h1>Lista de Videos</h1>
-      <ul>
+    <div
+      className="flex justify-center items-center"
+      style={{ backgroundColor: "#121212" }}
+    >
+      <ul className="p-8">
         {videos.map((video) => (
-          <li key={video._id}>
-            <h2>{video.tempFilePath}</h2>
-            <h2>{video._id}</h2>
-            <video width="320" height="240" controls loop>
-              <source
-                src={`${HTTP.API_URL_VIDEOS}/${video.tempFilePath}`}
-                type="video/mp4"
-              />
-              {ERRORS.VIDEO_NOT_SUPPORTED}
-            </video>
+          <li key={video._id} className="mb-3">
+            <div className="relative">
+              <div className="overflow-hidden rounded-md">
+                <video
+                  width="700"
+                  controls
+                  loop
+                  style={{ borderRadius: "8px" }}
+                >
+                  <source
+                    src={`${HTTP.API_URL_VIDEOS}/${video.tempFilePath}`}
+                    type="video/mp4"
+                  />
+                  {ERRORS.VIDEO_NOT_SUPPORTED}
+                </video>
+              </div>
+              <h2 className="text-white text-base mt-2">{video.name}</h2>
+            </div>
           </li>
         ))}
       </ul>
