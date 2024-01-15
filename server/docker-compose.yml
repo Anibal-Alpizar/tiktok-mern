@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  tiktok-mern:
+    image: node
+    container_name: tiktok-mern
+    ports:
+      - 3000:3000
+    build: . 
+    command: npm run dev
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    
