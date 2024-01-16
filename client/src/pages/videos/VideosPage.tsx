@@ -1,31 +1,18 @@
-import { useEffect, useState } from "react";
-import { Video } from "../../interfaces";
-import axios from "axios";
-import { HTTP } from "../../constants";
-import{ Video as VideoCard} from "../../components/videos/Video";
+import { useEffect } from "react";
+import { Video } from "../../components/videos/Video";
+import { useVideos } from "../../hooks/useVideos";
 
 function VideoList() {
-  const [videos, setVideos] = useState<Video[]>([]);
+  const { loadVideos, videos } = useVideos();
 
   useEffect(() => {
-    axios
-      .get(HTTP.API_URL)
-      .then((response) => {
-        const modifiedVideos = response.data.map((video: Video) => ({
-          ...video,
-          tempFilePath: video.tempFilePath.replace("videos\\", ""),
-        }));
-        setVideos(modifiedVideos);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    loadVideos();
   }, []);
 
   return (
     <div className="flex justify-center items-center">
       <ul className="p-8">
-        <VideoCard videos={videos} />
+        <Video videos={videos} />
       </ul>
     </div>
   );
