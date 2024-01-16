@@ -1,29 +1,26 @@
-import axios from "axios";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useVideos } from "../../hooks/useVideos";
+import { File } from "../../interfaces/video";
 
 function UploadVideoPage() {
   const navigate = useNavigate();
-  // TODO: change any type
-  const [file, setFile] = useState<any>({
-    name: "",
-  });
+  const { uploadVideo} = useVideos();
 
+  const [file, setFile] = useState<File>();
   const [isFileSelected, setFileSelected] = useState<boolean>(false);
 
-  // TODO: change any type
-  const handlerSubmit = async (e: any) => {
+  const handlerSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("file", file.name!);
-      console.log(file.name);
-      await axios.post("http://localhost:3000/upload", formData);
-      console.log("Video uploaded successfully");
-      toast.success("Video uploaded successfully");
-      navigate("/");
+      if (file) {
+        await uploadVideo(file);
+        toast.success("Video uploaded successfully");
+        navigate("/");
+      } else toast.error("Please select a video");
     } catch (error) {
+      toast.error("Error uploading video");
       console.log(error);
     }
   };
@@ -32,6 +29,7 @@ function UploadVideoPage() {
     setFile({ ...file, name: e.target.files![0] });
     setFileSelected(true);
   };
+
   return (
     <form onSubmit={handlerSubmit}>
       <input type="file" onChange={handlerInput} accept="video/*" />
