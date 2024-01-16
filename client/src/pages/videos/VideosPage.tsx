@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { Video } from "../../interfaces";
 import axios from "axios";
 import { HTTP, ERRORS } from "../../constants";
+import { useVideos } from "../../hooks/useVideos";
 
 function VideoList() {
   const [videos, setVideos] = useState<Video[]>([]);
+
+  const { hello } = useVideos();
+
+  console.log(hello);
 
   useEffect(() => {
     axios
