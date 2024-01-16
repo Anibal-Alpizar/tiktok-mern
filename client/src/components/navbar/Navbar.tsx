@@ -4,7 +4,7 @@ import { navigations, mainNavigation as logo } from "./navigation";
 function Navbar() {
   return (
     <nav
-      className="flex justify-between text-white py-5 px-10"
+      className="flex justify-between text-white py-1 px-10"
       style={{ backgroundColor: "#121212", borderBottom: "5px solid #151515" }}
     >
       {logo.map(({ href, name, icon: Icon }, i) => {
