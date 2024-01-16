@@ -3,3 +3,7 @@ export interface Video {
   name: string;
   tempFilePath: string;
 }
+
+export interface File {
+  name: string;
+}
