@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "./index.css";
+import "./styles/index.css";
+import "./styles/body.css";
+import "./styles/scrollbar.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
