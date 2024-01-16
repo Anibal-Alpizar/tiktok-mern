@@ -7,10 +7,6 @@ import { useVideos } from "../../hooks/useVideos";
 function VideoList() {
   const [videos, setVideos] = useState<Video[]>([]);
 
-  const { hello } = useVideos();
-
-  console.log(hello);
-
   useEffect(() => {
     axios
       .get(HTTP.API_URL)
@@ -27,10 +23,7 @@ function VideoList() {
   }, []);
 
   return (
-    <div
-      className="flex justify-center items-center"
-      style={{ backgroundColor: "#121212" }}
-    >
+    <div className="flex justify-center items-center" style={{}}>
       <ul className="p-8">
         {videos.map((video) => (
           <li key={video._id} className="mb-3">
