@@ -3,10 +3,11 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useVideos } from "../../hooks/useVideos";
 import { File } from "../../interfaces/video";
+import FileInput from "../../components/ui/FileInput";
 
 function UploadVideoPage() {
   const navigate = useNavigate();
-  const { uploadVideo} = useVideos();
+  const { uploadVideo } = useVideos();
 
   const [file, setFile] = useState<File>();
   const [isFileSelected, setFileSelected] = useState<boolean>(false);
@@ -31,12 +32,14 @@ function UploadVideoPage() {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
-      <input type="file" onChange={handlerInput} accept="video/*" />
-      <button disabled={!isFileSelected} type="submit">
-        Submit Video
-      </button>
-    </form>
+    <div className="max-w-7xl px-4 mx-auto">
+      <form onSubmit={handlerSubmit}>
+        <button disabled={!isFileSelected} type="submit">
+          Submit Video
+        </button>
+        <FileInput onchange={handlerInput} />
+      </form>
+    </div>
   );
 }
 
