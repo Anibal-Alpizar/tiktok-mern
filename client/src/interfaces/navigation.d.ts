@@ -1,7 +1,7 @@
 export interface NavigationsItem {
   name: string;
   href: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType | string;
 }
 
 export interface MainNavigation {
