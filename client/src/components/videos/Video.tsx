@@ -14,6 +14,8 @@ export function Video({ videos }: VideoProps) {
           <div className=" rounded-md" style={{ width: "80%", margin: "auto" }}>
             <video
               controls
+              autoPlay= {true}
+              muted
               loop
               style={{
                 borderRadius: "8px",
