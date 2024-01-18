@@ -15,21 +15,32 @@ function Navbar() {
           </Link>
         );
       })}
-      <div className="flex gap-x-5">
+      <div className="flex gap-x-2">
         {navigations.map(({ href, name, icon: Icon }, i) => {
           return (
             <Link className="flex items-center gap-x-2" to={href} key={i}>
               <h1
-                className={`flex justify-center items-center gap-x-2 font-bold ${
-                  name === "Upload" ? "custom-upload-style" : ""
+                className={`flex justify-center items-center gap-x-4 font-medium ${
+                  name === "Upload" ? "" : ""
                 }`}
                 style={
                   name === "Upload"
-                    ? { backgroundColor: "#1B1B1B", padding: "10px" }
+                    ? {
+                        backgroundColor: "#1B1B1B",
+                        padding: "6px 15px 5px 0px ",
+                        borderRadius: "3px",
+                      }
+                    : name === "Log in"
+                    ? {
+                        backgroundColor: "#EF2950",
+                        padding: "6px 15px 6px 15px",
+                        borderRadius: "3px",
+                        margin: "5px",
+                      }
                     : {}
                 }
               >
-                <Icon />
+                {Icon && <Icon />}
                 {name}
               </h1>
             </Link>
