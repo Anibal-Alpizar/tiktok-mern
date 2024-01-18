@@ -5,7 +5,8 @@ import { NavigationsItem, MainNavigation } from "../../interfaces/navigation";
 
 export const navigations: NavigationsItem[] = [
   { name: "Upload", href: "/new", icon: FaPlus },
-  { name: "", href: "/", icon: FiSend },
+  // { name: "", href: "/", icon: FiSend },
+  { name: "Log in", href: "/login", icon: ""},
 ];
 
 export const mainNavigation: MainNavigation[] = [
