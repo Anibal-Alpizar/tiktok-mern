@@ -5,6 +5,8 @@ import { useState } from "react";
 
 export const VideoProvider = ({ children }: any) => {
   const [videos, setVideos] = useState<Video[]>([]);
+  const [file, setFile] = useState<File>();
+  const [currentFormData, setCurrentFormData] = useState<FormData>();
 
   const loadVideos = async () => {
     try {
@@ -25,11 +27,16 @@ export const VideoProvider = ({ children }: any) => {
       const formData = new FormData();
       formData.append("file", file.name!);
       const response = await uploadVideoRequest(formData);
-      console.log(response);
+
+      setFile(file);
+
+      console.log(file);
+      // console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <VideosContext.Provider
       value={{
