@@ -14,10 +14,15 @@ export const getVideos = async (req: Request, res: Response) => {
 export const postVideo = async (req: Request, res: Response) => {
   try {
     const { name, tempFilePath } = req.files!.file as UploadedFile;
+    const { description } = req.body;
 
-    await videosActions.postVideoHelper(name, tempFilePath);
+    const newVideo = await videosActions.postVideoHelper(
+      name,
+      tempFilePath,
+      description
+    );
 
-    res.status(200).json({ message: "Video uploaded successfully" });
+    res.status(200).json({ message: newVideo });
   } catch (error) {
     res.status(500).json({ error: "Error while uploading video" });
   }
