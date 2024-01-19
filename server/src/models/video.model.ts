@@ -11,6 +11,11 @@ const videoSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 export default mongoose.model("Video", videoSchema);
