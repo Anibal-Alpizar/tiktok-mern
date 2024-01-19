@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { File, Video } from "../interfaces/video";
 
 interface VideosContextProps {
-  uploadVideo: (file: File) => void;
+  uploadVideo: (file: File, description: string) => void;
   loadVideos: () => void;
   videos: Video[];
 }
