@@ -12,9 +12,10 @@ export function Video({ videos }: VideoProps) {
       {videos.map((video: VideoType) => (
         <li key={video._id} className="mb-3">
           <div className=" rounded-md" style={{ width: "80%", margin: "auto" }}>
+            <h2 className="text-white text-base mt-2">{video.name}</h2>
             <video
               controls
-              autoPlay= {true}
+              autoPlay={true}
               muted
               loop
               style={{
@@ -31,7 +32,6 @@ export function Video({ videos }: VideoProps) {
               {ERRORS.VIDEO_NOT_SUPPORTED}
             </video>
           </div>
-          <h2 className="text-white text-base mt-2">{video.name}</h2>
         </li>
       ))}
     </div>
