@@ -1,6 +1,5 @@
 import Video from "../models/video.model";
 
-
 const getVideosHelper = async () => {
   try {
     const videos = await Video.find();
@@ -11,11 +10,16 @@ const getVideosHelper = async () => {
   }
 };
 
-const postVideoHelper = async (name: string, tempFilePath: string) => {
+const postVideoHelper = async (
+  name: string,
+  tempFilePath: string,
+  description: string
+) => {
   try {
     const newVideo = new Video({
       name,
       tempFilePath,
+      description,
     });
 
     await newVideo.save();
