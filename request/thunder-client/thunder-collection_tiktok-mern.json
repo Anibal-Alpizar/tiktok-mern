@@ -1,0 +1,45 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "tiktok-mern",
+    "dateExported": "2024-01-20T01:22:30.701Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "967d8d0e-dd14-41f5-ae24-aac9b58482eb",
+            "name": "videos",
+            "containerId": "",
+            "created": "2024-01-20T01:18:51.383Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b57a67f2-af95-45db-9862-dbd8977a38b5",
+            "colId": "b125ab2c-6705-4dc5-aaff-3bd8af89efa1",
+            "containerId": "967d8d0e-dd14-41f5-ae24-aac9b58482eb",
+            "name": "/",
+            "url": "http://localhost:3000/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-20T01:19:32.146Z",
+            "modified": "2024-01-20T01:19:39.789Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "90e21c66-7f74-4921-8469-189917c64a7b",
+            "colId": "b125ab2c-6705-4dc5-aaff-3bd8af89efa1",
+            "containerId": "967d8d0e-dd14-41f5-ae24-aac9b58482eb",
+            "name": "/",
+            "url": "http://localhost:3000/",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-01-20T01:20:05.067Z",
+            "modified": "2024-01-20T01:20:42.247Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
