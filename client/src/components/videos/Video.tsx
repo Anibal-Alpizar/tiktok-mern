@@ -1,4 +1,3 @@
-// video.tsx
 import { ERRORS, HTTP } from "../../constants";
 import { Video as VideoType } from "../../interfaces";
 import { IoIosMusicalNotes } from "react-icons/io";
@@ -10,7 +9,7 @@ interface VideoProps {
 
 export function Video({ videos }: VideoProps) {
   return (
-      <ul className="flex" style={{ flexWrap: "inherit" }}>
+    <ul className="flex" style={{ flexWrap: "inherit" }}>
       <FaRegUserCircle className="text-4xl text-white" />
       {videos.map((video: VideoType) => (
         <li key={video._id} className="mb-3">

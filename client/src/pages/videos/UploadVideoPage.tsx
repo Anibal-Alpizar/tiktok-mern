@@ -42,6 +42,7 @@ function UploadVideoPage() {
           Submit Video
         </button>
         <input
+          className="text-black"
           autoFocus
           {...register("description")}
           type="text"
