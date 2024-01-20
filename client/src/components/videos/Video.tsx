@@ -1,6 +1,8 @@
 // video.tsx
 import { ERRORS, HTTP } from "../../constants";
 import { Video as VideoType } from "../../interfaces";
+import { IoIosMusicalNotes } from "react-icons/io";
+import { FaRegUserCircle } from "react-icons/fa";
 
 interface VideoProps {
   videos: VideoType[];
@@ -8,11 +10,17 @@ interface VideoProps {
 
 export function Video({ videos }: VideoProps) {
   return (
-    <div>
+      <ul className="flex" style={{ flexWrap: "inherit" }}>
+      <FaRegUserCircle className="text-4xl text-white" />
       {videos.map((video: VideoType) => (
         <li key={video._id} className="mb-3">
-          <div className=" rounded-md" style={{ width: "80%", margin: "auto" }}>
-            <h2 className="text-white text-base mt-2">{video.name}</h2>
+          <div className="rounded-md" style={{ width: "80%", margin: "auto" }}>
+            <h1 className="font-bold text-lg">John Doe</h1>
+            <p className="text-white text-lg">{video.description}</p>
+            <div className="flex items-center gap-x-2 mb-3">
+              <IoIosMusicalNotes />
+              <h2 className="text-white text-sm">{video.name}</h2>
+            </div>
             <video
               controls
               autoPlay={true}
@@ -34,6 +42,6 @@ export function Video({ videos }: VideoProps) {
           </div>
         </li>
       ))}
-    </div>
+    </ul>
   );
 }
