@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// TODO: use zod to validate the schema
+
 const videoSchema = new mongoose.Schema({
   name: {
     type: String,
