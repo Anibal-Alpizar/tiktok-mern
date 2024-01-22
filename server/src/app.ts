@@ -7,10 +7,13 @@ import videosRouter from "./routes/videos.routes";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/users.routes";
 import { errorHandler } from "./middleware/error.middleware";
+import dotenv from "dotenv";
 
 const app: Express = express();
 
 // Settings
+dotenv.config();
+
 app.use(
   cors({
     origin: "http://localhost:5173",
