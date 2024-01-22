@@ -19,6 +19,17 @@ const registerUser = async (name: string, email: string, password: string) => {
   }
 };
 
+const getUserByEmail = async (email: string) => {
+  try {
+    const existingUser = await Auth.findOne({ email });
+    if (existingUser) return existingUser;
+    else return null;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const authActions = {
   registerUser,
+  getUserByEmail,
 };
