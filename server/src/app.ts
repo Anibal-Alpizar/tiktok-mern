@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import morgan from "morgan";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import videosRouter from "./routes/videos.routes";
 import authRouter from "./routes/auth.routes";
@@ -25,6 +26,7 @@ app.use(
 
 // Middlewares
 app.use(morgan("dev"));
+app.use(cookieParser());
 app.use(express.json());
 
 // Static files
