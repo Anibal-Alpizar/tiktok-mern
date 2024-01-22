@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "tiktok-mern",
-    "dateExported": "2024-01-20T01:22:30.701Z",
+    "dateExported": "2024-01-21T22:46:45.561Z",
     "version": "1.1",
     "folders": [
         {
@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2024-01-20T01:18:51.383Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "e545ac8f-66e2-4036-a820-f3c324beb735",
+            "name": "auth",
+            "containerId": "",
+            "created": "2024-01-21T22:07:16.665Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -39,6 +46,25 @@
             "modified": "2024-01-20T01:20:42.247Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0b022ef0-a20b-40ba-86da-9d950f3b6137",
+            "colId": "b125ab2c-6705-4dc5-aaff-3bd8af89efa1",
+            "containerId": "e545ac8f-66e2-4036-a820-f3c324beb735",
+            "name": "/signup",
+            "url": "http://localhost:3000/signup",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-01-21T22:45:46.723Z",
+            "modified": "2024-01-21T22:46:29.877Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"anibal\",\n  \"email\": \"anibal@ibm.com\",\n  \"password\": \"ibm2024\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]
