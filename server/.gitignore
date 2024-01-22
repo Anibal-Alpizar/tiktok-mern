@@ -1,2 +1,18 @@
+#build output
+dist/
+
+# dependency
 node_modules
+
+# local files that can be recreated
 videos
+
+# environment variables
+.env
+.env.local
+.env.production
+
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
