@@ -19,10 +19,26 @@ const registerUser = async (name: string, email: string, password: string) => {
   }
 };
 
+const loginUser = async (email: string, password: string) => {
+  try {
+    const user = await Auth.findOne({ email });
+
+    if (!user) return null;
+
+    const isPasswordMatch = await Auth.comparePassword(password, user.password);
+
+    if (!isPasswordMatch) return null;
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const getUserByEmail = async (email: string) => {
   try {
-    const existingUser = await Auth.findOne({ email });
-    if (existingUser) return existingUser;
+    const existingEmail = await Auth.findOne({ email });
+    if (existingEmail) return existingEmail;
     else return null;
   } catch (error) {
     throw error;
@@ -31,5 +47,6 @@ const getUserByEmail = async (email: string) => {
 
 export const authActions = {
   registerUser,
+  loginUser,
   getUserByEmail,
 };
