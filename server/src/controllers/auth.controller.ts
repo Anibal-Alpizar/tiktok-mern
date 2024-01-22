@@ -34,3 +34,25 @@ export const signup = async (
     next(error);
   }
 };
+
+export const signin = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  try {
+    const existingUser = await authActions.getUserByEmail(email);
+    if (!existingUser) return res.status(400).json({ error: "User not found" });
+    const user = await authActions.loginUser(email, password);
+    if (!user) return res.status(400).json({ error: "Invalid password" });
+
+    const token = await createAccessToken({ id: user.id });
+    res.cookie("token", token, {
+      httpOnly: true, // js cannot access the cookie
+      sameSite: "none",
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+    });
+
+    res.status(200).json({ message: user });
+  } catch (error) {
+    res.status(500).json({ error: "Error while logging in" });
+  }
+};
