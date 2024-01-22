@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+import { IAuth, IAuthModel } from "../interfaces/auth.interfaces";
 
 // TODO: use zod to validate the schema
 
-const authSchema = new mongoose.Schema({
+const authSchema = new mongoose.Schema<IAuth, IAuthModel>({
   name: {
     type: String,
     required: true,
@@ -19,4 +21,9 @@ const authSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Auth", authSchema);
+authSchema.statics.encryptPassword = async (password: string) => {
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
+};
+
+export default mongoose.model<IAuth, IAuthModel>("Auth", authSchema);
