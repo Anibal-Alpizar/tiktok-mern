@@ -25,4 +25,11 @@ authSchema.statics.encryptPassword = async (password: string) => {
   return await bcrypt.hash(password, salt);
 };
 
+authSchema.statics.comparePassword = async (
+  password: string,
+  receivedPassword: string
+) => {
+  return await bcrypt.compare(password, receivedPassword);
+};
+
 export default mongoose.model<IAuth, IAuthModel>("Auth", authSchema);
