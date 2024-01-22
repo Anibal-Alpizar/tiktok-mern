@@ -21,9 +21,9 @@ export const signup = async (
     const token = await createAccessToken({ id: newUser.id });
 
     res.cookie("token", token, {
-      httpOnly: true, // js cannot access the cookie
-      sameSite: "none",
-      secure: true,
+      // httpOnly: true, // js cannot access the cookie
+      // sameSite: "none",
+      // secure: true,
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     });
 
@@ -45,9 +45,9 @@ export const signin = async (req: Request, res: Response) => {
 
     const token = await createAccessToken({ id: user.id });
     res.cookie("token", token, {
-      httpOnly: true, // js cannot access the cookie
-      sameSite: "none",
-      secure: true,
+      // httpOnly: true, // js cannot access the cookie
+      // secure: true,
+      // sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     });
 
@@ -55,4 +55,11 @@ export const signin = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ error: "Error while logging in" });
   }
+};
+
+export const signout = (req: Request, res: Response) => {
+  if (!req.cookies.token)
+    return res.status(400).json({ error: "User is not logged in" });
+  res.clearCookie("token");
+  res.status(200).json({ message: "User signed out successfully" });
 };
