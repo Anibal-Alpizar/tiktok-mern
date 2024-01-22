@@ -8,4 +8,5 @@ export interface IAuth {
 
 export interface IAuthModel extends Model<IAuth> {
   encryptPassword(password: string): Promise<string>;
+  comparePassword(password: string, receivedPassword: string): Promise<boolean>;
 }
