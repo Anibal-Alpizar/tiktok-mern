@@ -8,6 +8,8 @@ const registerUser = async (name: string, email: string, password: string) => {
       password,
     });
 
+    newUser.password = await Auth.encryptPassword(password);
+
     await newUser.save();
 
     return newUser;
