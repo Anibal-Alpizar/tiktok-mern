@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { authActions } from "../helpers/auth.helper";
 import { createAccessToken } from "../libs/jwt";
+import { createCookie } from "../libs/cookie";
 
 export const signup = async (
   req: Request,
@@ -20,12 +21,7 @@ export const signup = async (
 
     const token = await createAccessToken({ id: newUser.id });
 
-    res.cookie("token", token, {
-      // httpOnly: true, // js cannot access the cookie
-      // sameSite: "none",
-      // secure: true,
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-    });
+    createCookie(res, token as string);
 
     res.status(200).json({ message: newUser });
   } catch (error) {
@@ -44,12 +40,8 @@ export const signin = async (req: Request, res: Response) => {
     if (!user) return res.status(400).json({ error: "Invalid password" });
 
     const token = await createAccessToken({ id: user.id });
-    res.cookie("token", token, {
-      // httpOnly: true, // js cannot access the cookie
-      // secure: true,
-      // sameSite: "none",
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-    });
+
+    createCookie(res, token as string);
 
     res.status(200).json({ message: user });
   } catch (error) {
