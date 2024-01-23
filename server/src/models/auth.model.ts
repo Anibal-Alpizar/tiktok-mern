@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { IAuth, IAuthModel } from "../interfaces/auth.interfaces";
 
-// TODO: use zod to validate the schema
-const authSchema = new mongoose.Schema<IAuth, IAuthModel>({
+export const authSchema = new mongoose.Schema<IAuth, IAuthModel>({
   name: {
     type: String,
     required: true,
@@ -12,6 +11,7 @@ const authSchema = new mongoose.Schema<IAuth, IAuthModel>({
   email: {
     type: String,
     required: true,
+    unique: true,
     trim: true,
   },
   password: {
