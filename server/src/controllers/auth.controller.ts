@@ -55,3 +55,12 @@ export const signout = (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).json({ message: "User signed out successfully" });
 };
+
+export const me = async (req: any, res: Response) => {
+  const user = await authActions.getUserById(req.userId);
+  if (!user)
+    return res
+      .status(400)
+      .json({ error: "User not found, please login again" });
+  res.status(200).json({ message: user });
+};
