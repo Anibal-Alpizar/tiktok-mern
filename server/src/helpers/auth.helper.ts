@@ -45,8 +45,19 @@ const getUserByEmail = async (email: string) => {
   }
 };
 
+const getUserById = async (id: string) => {
+  try {
+    const user = await Auth.findById(id);
+    if (user) return user;
+    else return null;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const authActions = {
   registerUser,
   loginUser,
   getUserByEmail,
+  getUserById,
 };
