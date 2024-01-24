@@ -1,0 +1,26 @@
+@api = http://localhost:3000
+
+### Sign Up
+POST {{api}}/signup
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "name": "test",
+    "password": "test123"
+}
+
+### Sign In
+POST {{api}}/signin
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test123"
+}
+
+### My Profile
+GET {{api}}/me
+
+### Sign Out
+GET {{api}}/signout
