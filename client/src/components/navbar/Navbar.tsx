@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { navigations, mainNavigation as logo } from "./navigation";
+import LoginCard from "../login/LoginCard";
 
 function Navbar() {
+  const [showLoginCard, setShowLoginCard] = useState(false);
+
+  const handleLoginClick = () => {
+    setShowLoginCard(true);
+  };
+
   return (
     <nav
       className="flex justify-between text-white py-1 px-10"
@@ -39,6 +47,7 @@ function Navbar() {
                       }
                     : {}
                 }
+                onClick={name === "Log in" ? handleLoginClick : undefined}
               >
                 {Icon && <Icon />}
                 {name}
@@ -47,6 +56,7 @@ function Navbar() {
           );
         })}
       </div>
+      {showLoginCard && <LoginCard onClose={() => setShowLoginCard(false)} />}
     </nav>
   );
 }
