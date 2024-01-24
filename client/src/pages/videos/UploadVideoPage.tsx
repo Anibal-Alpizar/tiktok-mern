@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useVideos } from "../../hooks/useVideos";
 import { File } from "../../interfaces/video";
-import FileInput from "../../components/ui/FileInput";
+import { FileInput } from "../../components/ui";
 import { useForm } from "react-hook-form";
 
 function UploadVideoPage() {
