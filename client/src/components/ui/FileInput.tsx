@@ -1,4 +1,4 @@
-import { FileInputProps } from "../../interfaces/ui/FileInputProps";
+import { FileInputProps } from "../../interfaces/ui/fileInputProps";
 
 export function FileInput({ onchange }: FileInputProps) {
   return (
