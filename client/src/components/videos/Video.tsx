@@ -57,12 +57,11 @@ export function Video({ videos }: VideoProps) {
                   </video>
                   <FaHeart
                     data-videoid={video._id}
-                    className={`text-3xl absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer ${
+                    className={`text-3xl absolute top-72 left-4 transform -translate-y-1/2 cursor-pointer ${
                       likedVideos.includes(video._id) ? "text-red-700" : ""
                     }`}
                     onClick={() => handleHeartClick(video._id)}
                   />
-                  <FaCommentDots className="text-3xl absolute top-72 left-4 transform -translate-y-1/2 cursor-pointer" />
                 </div>
               </div>
             </div>
