@@ -1,11 +1,8 @@
 import { ERRORS, HTTP } from "../../constants";
-import { Video as VideoType } from "../../interfaces";
+import { Video as VideoType } from "../../interfaces/video/videoProps"
 import { IoIosMusicalNotes } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
-
-interface VideoProps {
-  videos: VideoType[];
-}
+import { VideoProps } from "../../interfaces/video/videoProps";
 
 export function Video({ videos }: VideoProps) {
   return (
