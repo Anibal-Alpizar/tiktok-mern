@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import { File, Video } from "../interfaces/video";
+import { file, video } from "../interfaces/video/videoProps";
 
 interface VideosContextProps {
-  uploadVideo: (file: File, description: string) => void;
+  uploadVideo: (file: file, description: string) => void;
   loadVideos: () => void;
-  videos: Video[];
+  videos: video[];
 }
 
 export const VideosContext = createContext<VideosContextProps | undefined>(
