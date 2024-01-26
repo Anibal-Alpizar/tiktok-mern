@@ -1,17 +1,21 @@
-export interface Video {
+export interface video {
   _id: string;
   name: string;
   tempFilePath: string;
   description: string;
 }
 
-export interface VideoProps {
-  videos: Video[];
+export interface videoProps {
+  videos: video[];
 }
 
-export interface Video {
+export interface video {
   _id: string;
   name: string;
   tempFilePath: string;
   description: string;
+}
+
+export interface file {
+  name: string;
 }
