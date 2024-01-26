@@ -1,12 +1,12 @@
 import { ERRORS, HTTP } from "../../constants";
-import { Video as VideoType } from "../../interfaces/video/videoProps";
+import { video as videoType } from "../../interfaces/video/videoProps";
 import { IoIosMusicalNotes } from "react-icons/io";
 import { FaRegUserCircle, FaCommentDots } from "react-icons/fa";
-import { VideoProps } from "../../interfaces/video/videoProps";
+import { videoProps } from "../../interfaces/video/videoProps";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 
-export function Video({ videos }: VideoProps) {
+export function Video({ videos }: videoProps) {
   const [likedVideos, setLikedVideos] = useState<string[]>([]);
 
   const handleHeartClick = (videoId: string) => {
@@ -20,7 +20,7 @@ export function Video({ videos }: VideoProps) {
 
   return (
     <ul className="" style={{ flexWrap: "inherit" }}>
-      {videos.map((video: VideoType) => (
+      {videos.map((video: videoType) => (
         <li key={video._id} className="mb-3">
           <div className="relative">
             <div className="flex">
