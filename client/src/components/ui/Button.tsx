@@ -1,8 +1,19 @@
-import { ButtonProps } from "../../interfaces/ui/buttonProps";
+import { buttonProps } from "../../interfaces/ui/buttonProps";
 
-export function Button({ children, type = "button", onClick }: ButtonProps) {
+export function Button({
+  children,
+  type = "button",
+  onClick,
+  disabled,
+  className,
+}: buttonProps) {
   return (
-    <button type={type} onClick={onClick}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+    >
       {children}
     </button>
   );
