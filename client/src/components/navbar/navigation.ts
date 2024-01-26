@@ -1,7 +1,7 @@
 import { FaTiktok } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { FiSend } from "react-icons/fi";
-import { NavigationsItem, MainNavigation } from "../../interfaces/navigation";
+import { NavigationsItem, MainNavigation } from "../../interfaces/navbar/navigation";
 
 export const navigations: NavigationsItem[] = [
   { name: "Upload", href: "/new", icon: FaPlus },
