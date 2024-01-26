@@ -1,10 +1,10 @@
-export interface NavigationsItem {
+export interface navigationsItem {
   name: string;
   href: string;
   icon: React.ComponentType | string;
 }
 
-export interface MainNavigation {
+export interface mainNavigation {
   name: string;
   href: string;
   icon: React.ComponentType;
