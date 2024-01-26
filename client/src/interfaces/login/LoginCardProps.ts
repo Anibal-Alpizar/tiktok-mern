@@ -1,3 +1,3 @@
-export interface LoginCardProps {
+export interface loginCardProps {
   onClose: () => void;
 }
