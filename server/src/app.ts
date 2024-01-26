@@ -8,10 +8,15 @@ import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/users.routes";
 import { errorHandler } from "./middleware/error.middleware";
 import dotenv from "dotenv";
+import fs from "fs";
 
 const app: Express = express();
 
 // Settings
+if (!fs.existsSync(".env")) {
+  console.error("No .env file found");
+  process.exit(1);
+}
 dotenv.config();
 
 app.use(
