@@ -1,7 +1,7 @@
+import { loginCardProps } from "../../interfaces/login/loginCardProps";
 import { Input, Button, Label } from "../ui";
-import { LoginCardProps } from "../../interfaces/login/LoginCardProps";
 
-const LoginCard = ({ onClose }: LoginCardProps) => {
+const LoginCard = ({ onClose }: loginCardProps) => {
   return (
     <div className="text-black fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-2xl shadow-lg z-50">
       <h2 className="mb-4">Login</h2>
