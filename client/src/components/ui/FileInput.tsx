@@ -1,6 +1,6 @@
-import { FileInputProps } from "../../interfaces/ui/fileInputProps";
+import { fileInputProps } from "../../interfaces/ui/fileInputProps";
 
-export function FileInput({ onchange }: FileInputProps) {
+export function FileInput({ onChange }: fileInputProps) {
   return (
     <div className="flex items-center justify-center w-full">
       <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -42,7 +42,7 @@ export function FileInput({ onchange }: FileInputProps) {
           id="dropzone-file"
           type="file"
           className="hidden"
-          onChange={onchange}
+          onChange={onChange}
         />
       </label>
     </div>
