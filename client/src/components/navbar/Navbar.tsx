@@ -26,48 +26,39 @@ function Navbar() {
         );
       })}
       <div className="flex gap-x-2">
-        {isAuth ? (
-          // Mostrar el nombre de usuario en lugar del botón de inicio de sesión
-          <h1 className="flex items-center gap-x-2">
-            ¡Hola, {user.name}!
-          </h1>
-        ) : (
-          navigations.map(({ href, name, icon: Icon }, i) => {
-            // Ocultar el botón de Log In cuando el usuario está autenticado
-            if (name === "Log in" && isAuth) {
-              return null;
-            }
+        {navigations.map(({ href, name, icon: Icon }, i) => {
+          if (name === "Log in" && isAuth) {
+            return null;
+          }
 
-            return (
-              <Link className="flex items-center gap-x-2" to={href} key={i}>
-                <h1
-                  className={`flex justify-center items-center gap-x-4 font-medium ${
-                    name === "Upload" ? "" : ""
-                  }`}
-                  style={
-                    name === "Upload"
-                      ? {
-                          backgroundColor: "#1B1B1B",
-                          padding: "6px 15px 5px 0px ",
-                          borderRadius: "3px",
-                        }
-                      : name === "Log in"
-                      ? {
-                          backgroundColor: "#EF2950",
-                          padding: "6px 15px 6px 15px",
-                          borderRadius: "3px",
-                          margin: "5px",
-                        }
-                      : {}
-                  }
-                  onClick={name === "Log in" ? handleLoginClick : undefined}
-                >
-                  {Icon && <Icon />}
-                  {name}
-                </h1>
-              </Link>
-            );
-          })
+          return (
+            <Link className="flex items-center gap-x-2" to={href} key={i}>
+              <h1
+                className={`flex justify-center items-center gap-x-4 font-medium ${
+                  name === "Upload" ? "" : ""
+                }`}
+                style={
+                  name === "Log in"
+                    ? {
+                        backgroundColor: "#EF2950",
+                        padding: "6px 15px 6px 15px",
+                        borderRadius: "3px",
+                        margin: "5px",
+                      }
+                    : {}
+                }
+                onClick={name === "Log in" ? handleLoginClick : undefined}
+              >
+                {Icon && <Icon />}
+                {name}
+              </h1>
+            </Link>
+          );
+        })}
+        {isAuth ? (
+          <h1 className="flex items-center gap-x-2">Hi, {user.name}!</h1>
+        ) : (
+          ""
         )}
       </div>
       {showLoginCard && <LoginCard onClose={() => setShowLoginCard(false)} />}
