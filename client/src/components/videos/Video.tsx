@@ -28,7 +28,7 @@ export function Video({ videos }: videoProps) {
               <div
                 onDoubleClick={() => handleHeartClick(video._id)}
                 className="rounded-md relative"
-                style={{ width: "80%", margin: "auto" }}
+                style={{ width: "85%", margin: "auto" }}
               >
                 <h1 className="font-bold text-lg">John Doe</h1>
                 <p className="text-white text-lg">{video.description}</p>
