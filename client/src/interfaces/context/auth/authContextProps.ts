@@ -1,3 +1,4 @@
+//TODO: add types
 export interface authContextProps {
   user: any;
   isAuth: boolean;
