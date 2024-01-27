@@ -8,7 +8,8 @@ const LoginCard = ({ onClose }: loginCardProps) => {
   const { signIn, errors: loginErrors } = useAuth();
 
   const onSubmit = handleSubmit(async (data) => {
-    await signIn(data);
+    const login = await signIn(data);
+    if (login !== undefined) window.location.reload();
   });
 
   return (
