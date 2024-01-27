@@ -1,7 +1,7 @@
 import { AuthContext } from "../AuthContext";
-import { loginRequest } from "../../api/auth.api";
+import { loginRequest, meRequest } from "../../api/auth.api";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode[] }) => {
   const [user, setUser] = useState<any>(null);
@@ -23,6 +23,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode[] }) => {
       else setErrors(error.response.data);
     }
   };
+
+  useEffect(() => {
+    const storedJwt = Cookies.get("token");
+    if (storedJwt) {
+      meRequest()
+        .then((res) => {
+          setUser(res.data.message);
+          setIsAuth(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
 
   return (
     <AuthContext.Provider
