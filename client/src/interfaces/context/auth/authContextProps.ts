@@ -1,1 +1,6 @@
-export interface authContextProps {}
+export interface authContextProps {
+  user: any;
+  isAuth: boolean;
+  errors: any;
+  signIn: (data: any) => void;
+}
