@@ -3,7 +3,11 @@ import { getVideosRequest, uploadVideoRequest } from "../../api/video.api";
 import { file, video } from "../../interfaces/video/videoProps";
 import { useState } from "react";
 
-export const VideoProvider = ({ children }: any) => {
+export const VideoProvider = ({
+  children,
+}: {
+  children: React.ReactNode[];
+}) => {
   const [videos, setVideos] = useState<video[]>([]);
 
   const loadVideos = async () => {
