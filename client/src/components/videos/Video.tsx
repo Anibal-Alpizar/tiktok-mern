@@ -38,7 +38,7 @@ export function Video({ videos }: videoProps) {
                 </div>
                 <div style={{ position: "relative" }}>
                   <video
-                    // controls
+                    controls
                     autoPlay={true}
                     muted
                     loop
