@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <nav
-      className="flex justify-between text-white py-1 px-10"
+      className="flex justify-between text-white py-3 px-9"
       style={{ backgroundColor: "#121212", borderBottom: "5px solid #151515" }}
     >
       {logo.map(({ href, name, icon: Icon }, i) => {
@@ -34,13 +34,12 @@ function Navbar() {
           return (
             <Link className="flex items-center gap-x-2" to={href} key={i}>
               <h1
-                className={`flex justify-center items-center gap-x-4 font-medium ${
-                  name === "Upload" ? "" : ""
-                }`}
+                className={`flex justify-center items-center gap-x-4 p-1 px-2 font-medium ${
+                  name === "Upload" ? "bg-neutral-800" : ""
+                } ${name === "Log in" ? "bg-red-600" : ""}`}
                 style={
                   name === "Log in"
                     ? {
-                        backgroundColor: "#EF2950",
                         padding: "6px 15px 6px 15px",
                         borderRadius: "3px",
                         margin: "5px",
