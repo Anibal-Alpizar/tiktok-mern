@@ -34,7 +34,7 @@ function Navbar() {
           return (
             <Link className="flex items-center gap-x-2" to={href} key={i}>
               <h1
-                className={`flex justify-center items-center content-center gap-x-4 p-1 font-medium ${
+                className={`flex justify-center items-center text-center gap-x-4 p-1 font-medium ${
                   name === "Upload" ? "bg-neutral-800" : ""
                 } ${name === "Log in" ? "bg-pink-800" : ""}`}
                 style={
